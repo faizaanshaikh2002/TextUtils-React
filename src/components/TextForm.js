@@ -3,25 +3,35 @@ import React, { useState } from 'react'
 
 export default function TextForm(props) {
     const handleUpClick = () => {
-        // console.log("uppercase was clicked")
         let newText = text.toLocaleUpperCase();
         setText(newText)
     }
+    const handleLowClick = () => {
+        let newText = text.toLocaleLowerCase();
+        setText(newText)
+    }
     const handleOnChange = (event) => {
-        // console.log("OnChange was clicked")
         setText(event.target.value)
     }
-    const [text, setText] = useState("Enter text here");
-    // text = "Changing text", Wrong way to change the state
-    // setText("new text"); //Correct way to change the state
+    const [text, setText] = useState("");
     return (
-        <div>
-            <div className="mb-3">
-                <h1>{props.heading}</h1>
-                <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+        <>
+            <div className='container'>
+                <div className="mb-3">
+                    <h1>{props.heading}</h1>
+                    <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+                </div>
+                <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert To UpperCase</button>
+                <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert To LowerCase</button>
             </div>
-            <button className="btn btn-primary" onClick={handleUpClick}>Convert To UpperCase</button>
-        </div>
+            <div className="container my-2">
+                <h2>Your text summary</h2>
+                <p><b>{text.split(" ").length - 1} wrods and {text.length}characters</b></p>
+                <p><b>{Math.round(0.008 * text.split(" ").length)} Minutes to read</b></p>
+                <h2>Preview</h2>
+                <p>{text}</p>
+            </div>
+        </>
     )
 }
 
