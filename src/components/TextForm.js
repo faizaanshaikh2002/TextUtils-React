@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 
 export default function TextForm(props) {
+    const [text, setText] = useState("");
+
     const handleUpClick = () => {
         let newText = text.toLocaleUpperCase();
         setText(newText)
@@ -10,10 +12,13 @@ export default function TextForm(props) {
         let newText = text.toLocaleLowerCase();
         setText(newText)
     }
+    const handleClearClick = () => {
+        let newText = "";
+        setText(newText)
+    }
     const handleOnChange = (event) => {
         setText(event.target.value)
     }
-    const [text, setText] = useState("");
     return (
         <>
             <div className='container'>
@@ -23,6 +28,7 @@ export default function TextForm(props) {
                 </div>
                 <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert To UpperCase</button>
                 <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert To LowerCase</button>
+                <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear Content</button>
             </div>
             <div className="container my-2">
                 <h2>Your text summary</h2>
