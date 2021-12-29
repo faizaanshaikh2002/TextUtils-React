@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import Alert from './components/Alert';
 import {
   Route,
-  Routes
+  Routes,
 } from "react-router-dom";
 
 function App() {
@@ -42,8 +42,8 @@ function App() {
       <Alert alert={alert} />
       <div className='container my-3'>
         <Routes>
-          <Route path="/" element={<TextForm showAlert={showAlert} heading="Enter the text below to analyze" mode={modeState} />} />
-          <Route path="/about" element={<About />} />
+          <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text below to analyze" mode={modeState} />} />
+          <Route exact path="/about" element={<About />} />
         </Routes>
       </div>
     </>
